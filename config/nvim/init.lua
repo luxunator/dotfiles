@@ -7,12 +7,13 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.smarttab = true
 vim.o.softtabstop = 4
-
+vim.o.termguicolors = true
 vim.g.mapleader = ';'
 
 local vim = vim
 local execute = vim.api.nvim_command
 local fn = vim.fn
+local map = vim.keymap.set
 
 -- ensure that packer is installed
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
@@ -33,44 +34,47 @@ packer.init({
 require('plugins')
 require('configs')
 
-local colorscheme = "blue"
-
+local colorscheme = "tokyonight-moon"
 vim.cmd('colorscheme ' .. colorscheme)
 
-vim.keymap.set('', '<up>', '<nop>')
-vim.keymap.set('', '<down>', '<nop>')
-vim.keymap.set('', '<left>', '<nop>')
-vim.keymap.set('', '<right>', '<nop>')
-vim.keymap.set('n', '<leader>w', '<cmd>write<cr>')
-vim.keymap.set('n', '<leader>q', '<cmd>quit<cr>')
-vim.keymap.set('n', '<leader>qa', '<cmd>quitall<cr>')
+vim.notify = require("notify")
 
+map('', '<up>', '<nop>')
+map('', '<down>', '<nop>')
+map('', '<left>', '<nop>')
+map('', '<right>', '<nop>')
+map('n', '<leader>w', '<cmd>write<cr>')
+map('n', '<leader>q', '<cmd>quit<cr>')
+map('n', '<leader>qa', '<cmd>quitall<cr>')
 
-vim.keymap.set('n', '<C-l>', '<cmd>tabnext<cr>')
-vim.keymap.set('n', '<C-h>', '<cmd>tabprevious<cr>')
+map('', '<A-h>', '<cmd>BufferPrevious<cr>')
+map('', '<A-l>', '<cmd>BufferNext<cr>')
+map('', '<A-x>', '<cmd>BufferMoveNext<cr>')
+map('', '<C-h>', '<cmd>BufferMovePrevious<cr>')
+map('', '<C-l>', '<cmd>BufferMoveNext<cr>')
 
-vim.keymap.set('n', '<leader>tb', '<cmd>TagbarOpenAutoClose<cr>')
-vim.keymap.set('n', '<leader>tbc', '<cmd>TagbarClose<cr>')
+map('n', '<leader>tb', '<cmd>TagbarOpenAutoClose<cr>')
+map('n', '<leader>tbc', '<cmd>TagbarClose<cr>')
 
-vim.keymap.set('n', '<leader>nt', '<cmd>NvimTreeToggle<cr>')
+map('n', '<leader>nt', '<cmd>NvimTreeToggle<cr>')
 
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-vim.keymap.set('n', '<leader>fs', '<cmd>Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader>fg', '<cmd>Telescope grep_string<cr>')
-vim.keymap.set('n', '<leader>fl', '<cmd>Telescope oldfiles<cr>')
-vim.keymap.set('n', '<leader>sp', '<cmd>Telescope spell_suggest<cr>')
-vim.keymap.set('n', '<leader>km', '<cmd>Telescope keymaps<cr>')
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>fs', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fg', '<cmd>Telescope grep_string<cr>')
+map('n', '<leader>fl', '<cmd>Telescope oldfiles<cr>')
+map('n', '<leader>sp', '<cmd>Telescope spell_suggest<cr>')
+map('n', '<leader>km', '<cmd>Telescope keymaps<cr>')
 
-vim.keymap.set('n', '<leader>gc', '<cmd>Telescope git_commits<cr>')
-vim.keymap.set('n', '<leader>gb', '<cmd>Telescope git_branches<cr>')
-vim.keymap.set('n', '<leader>gs', '<cmd>Telescope git_status<cr>')
+map('n', '<leader>gc', '<cmd>Telescope git_commits<cr>')
+map('n', '<leader>gb', '<cmd>Telescope git_branches<cr>')
+map('n', '<leader>gs', '<cmd>Telescope git_status<cr>')
 
-vim.keymap.set('n', '<leader>ts', '<cmd>Telescope treesitter<cr>')
+map('n', '<leader>ts', '<cmd>Telescope treesitter<cr>')
 
-vim.keymap.set('n', '<leader>re', '<cmd>Telescope lsp_references<cr>')
-vim.keymap.set('n', '<leader>ic', '<cmd>Telescope lsp_incoming_calls<cr>')
-vim.keymap.set('n', '<leader>oc', '<cmd>Telescope lsp_outgoing_calls<cr>')
-vim.keymap.set('n', '<leader>di', '<cmd>Telescope diagnostics<cr>')
-vim.keymap.set('n', '<leader>im', '<cmd>Telescope lsp_implementations<cr>')
-vim.keymap.set('n', '<leader>de', '<cmd>Telescope lsp_definitions<cr>')
-vim.keymap.set('n', '<leader>td', '<cmd>Telescope lsp_type_definitions<cr>')
+map('n', '<leader>re', '<cmd>Telescope lsp_references<cr>')
+map('n', '<leader>ic', '<cmd>Telescope lsp_incoming_calls<cr>')
+map('n', '<leader>oc', '<cmd>Telescope lsp_outgoing_calls<cr>')
+map('n', '<leader>di', '<cmd>Telescope diagnostics<cr>')
+map('n', '<leader>im', '<cmd>Telescope lsp_implementations<cr>')
+map('n', '<leader>de', '<cmd>Telescope lsp_definitions<cr>')
+map('n', '<leader>td', '<cmd>Telescope lsp_type_definitions<cr>')
