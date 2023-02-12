@@ -78,3 +78,12 @@ map('n', '<leader>di', '<cmd>Telescope diagnostics<cr>')
 map('n', '<leader>im', '<cmd>Telescope lsp_implementations<cr>')
 map('n', '<leader>de', '<cmd>Telescope lsp_definitions<cr>')
 map('n', '<leader>td', '<cmd>Telescope lsp_type_definitions<cr>')
+
+map('n', '<leader>dc', '<cmd>DapContinue<cr>')
+map('n', '<leader>si', '<cmd>DapStepInto<cr>')
+map('n', '<leader>so', '<cmd>DapStepOver<cr>')
+map('n', '<leader>sq', '<cmd>DapStepOut<cr>')
+map('n', '<leader>bp', '<cmd>DapToggleBreakpoint<cr>')
+map('n', '<leader>du', function() require('dapui').toggle() end)
+
+
