@@ -85,5 +85,5 @@ map('n', '<leader>so', '<cmd>DapStepOver<cr>')
 map('n', '<leader>sq', '<cmd>DapStepOut<cr>')
 map('n', '<leader>bp', '<cmd>DapToggleBreakpoint<cr>')
 map('n', '<leader>du', function() require('dapui').toggle() end)
-
-
+map('n', '<leader>wa', function() require('dapui').elements.watches.add() end)
+map('n', '<leader>wr', function() require('dapui').elements.watches.remove() end)
